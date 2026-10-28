@@ -737,7 +737,7 @@ export default function Home() {
       Number.isInteger(amount) &&
       amount >= 10000;
 
-    function createTopup(event: FormEvent<HTMLFormElement>) {
+    async function createTopup(event: FormEvent<HTMLFormElement>) {
       event.preventDefault();
 
       if (!validAmount) {
@@ -745,9 +745,32 @@ export default function Home() {
         return;
       }
 
-      setNotice(
-        "Top up belum tersedia. Integrasi payment gateway belum aktif, sehingga belum ada tagihan yang dibuat.",
-      );
+      setNotice("Menghubungkan ke DOKU Checkout...");
+      try {
+        const response = await fetch("/api/doku/checkout", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ amount }),
+        });
+        const data = (await response.json()) as {
+          paymentUrl?: string;
+          invoiceNumber?: string;
+          error?: string;
+        };
+
+        if (!response.ok || !data.paymentUrl) {
+          throw new Error(data.error || "Gagal membuat halaman pembayaran.");
+        }
+
+        setNotice("Tagihan dibuat. Mengalihkan ke halaman pembayaran DOKU...");
+        window.location.assign(data.paymentUrl);
+      } catch (error) {
+        setNotice(
+          error instanceof Error
+            ? error.message
+            : "Gagal menghubungi DOKU. Coba lagi nanti.",
+        );
+      }
     }
 
     return (
@@ -786,8 +809,7 @@ export default function Home() {
           <section className="rounded-2xl border border-white/10 bg-[#151020] p-5 md:p-6">
             <h3 className="text-lg font-bold">Isi Saldo</h3>
             <p className="mt-1 text-sm leading-6 text-gray-400">
-              Masukkan nominal dan pilih metode pembayaran. Pembuatan tagihan
-              belum aktif sebelum payment gateway terhubung.
+              Masukkan nominal untuk membuat halaman pembayaran aman melalui DOKU Checkout.
             </p>
 
             <form className="mt-6 space-y-5" onSubmit={createTopup}>
@@ -890,8 +912,7 @@ export default function Home() {
             </div>
 
             <p className="mt-5 rounded-xl border border-amber-400/15 bg-amber-500/[0.06] p-4 text-xs leading-5 text-amber-100/80">
-              Belum ada pembayaran nyata yang diproses. Jangan menganggap
-              nominal ini sebagai tagihan yang sudah dibayar.
+              Saldo tidak boleh ditambah hanya karena halaman checkout terbuka. Status pembayaran harus diverifikasi dari notifikasi DOKU di backend.
             </p>
           </section>
         </div>
