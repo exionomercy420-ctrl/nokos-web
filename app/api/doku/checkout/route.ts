@@ -26,10 +26,10 @@ export async function POST(request: Request) {
   try {
     const config = dokuConfig()
     const requestId = randomUUID()
-    const timestamp = new Date().toISOString().replace(/\\.\\d{3}Z$/, 'Z')
+    const timestamp = new Date().toISOString().replace(/\.\d{3}Z$/, 'Z')
     const invoice = `NOKOS-${Date.now()}-${randomUUID().slice(0, 8)}`
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL
-      ? process.env.NEXT_PUBLIC_SITE_URL.replace(/\\/$/, '')
+      ? process.env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, '')
       : new URL(request.url).origin
 
     const payload = {
