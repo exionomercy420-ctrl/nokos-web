@@ -14,7 +14,7 @@ export default function LoginPage() {
   const isRegister = mode === "register";
 
   return (
-    <main className="relative isolate min-h-dvh overflow-x-clip bg-[#070611] text-white">
+    <main className="relative isolate min-h-screen overflow-x-hidden bg-[#070611] text-white">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute -left-32 top-[-8rem] h-[28rem] w-[28rem] rounded-full bg-violet-600/20 blur-[120px]" />
         <div className="absolute -right-20 bottom-[-10rem] h-[32rem] w-[32rem] rounded-full bg-blue-500/20 blur-[130px]" />
@@ -32,8 +32,8 @@ export default function LoginPage() {
         <span className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1.5 text-[10px] text-slate-400 sm:px-3 sm:text-xs">Akses akun</span>
       </header>
 
-      <div className="mx-auto grid w-full max-w-7xl items-start gap-8 px-4 pb-8 pt-2 sm:gap-12 sm:px-8 sm:pt-6 lg:min-h-[calc(100vh-100px)] lg:items-center lg:grid-cols-[1.1fr_.9fr] lg:gap-20 lg:pb-20">
-        <section className="order-2 mx-auto w-full max-w-2xl lg:order-1 lg:mx-0">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-5 px-4 pb-8 pt-1 sm:gap-12 sm:px-8 sm:pt-6 lg:grid lg:min-h-[calc(100vh-100px)] lg:grid-cols-[1.1fr_.9fr] lg:items-center lg:gap-20 lg:pb-20">
+        <section className="order-2 mx-auto hidden w-full max-w-2xl lg:order-1 lg:block lg:mx-0">
           <div className="inline-flex items-center gap-2 rounded-full border border-violet-300/20 bg-violet-400/[0.08] px-3 py-1.5 text-xs font-medium text-violet-200">
             <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,.8)]" />
             Satu dashboard untuk kebutuhan nokos
@@ -115,15 +115,15 @@ export default function LoginPage() {
         </section>
 
         <section className="order-1 mx-auto w-full max-w-md lg:order-2">
-          <div className="rounded-3xl border border-white/[0.12] bg-[#100d1d]/90 p-5 shadow-2xl shadow-black/40 backdrop-blur-xl sm:rounded-[2rem] sm:p-9">
-            <div className="mb-5 sm:mb-7">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-blue-600 text-xl font-black shadow-lg shadow-violet-950/50 sm:mb-5 sm:h-14 sm:w-14 sm:text-2xl">N</div>
+          <div className="rounded-2xl border border-white/[0.12] bg-[#100d1d]/90 p-4 shadow-2xl shadow-black/40 backdrop-blur-xl sm:rounded-[2rem] sm:p-9">
+            <div className="mb-4 sm:mb-7">
+              <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-blue-600 text-lg font-black shadow-lg shadow-violet-950/50 sm:mb-5 sm:h-14 sm:w-14 sm:rounded-2xl sm:text-2xl">N</div>
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-violet-300">{isRegister ? "Mulai sekarang" : "Selamat datang kembali"}</p>
               <h2 className="mt-2 text-xl font-bold tracking-tight sm:text-2xl">{isRegister ? "Buat akun NOKOS" : "Masuk ke akunmu"}</h2>
               <p className="mt-2 text-sm leading-6 text-slate-400">{isRegister ? "Daftar untuk mulai mengelola layanan nomor virtual." : "Gunakan akun Google yang sama dengan saat mendaftar."}</p>
             </div>
 
-            <div className="mb-4 grid grid-cols-2 rounded-xl border border-white/10 bg-black/20 p-1 sm:mb-5">
+            <div className="mb-3 grid grid-cols-2 rounded-xl border border-white/10 bg-black/20 p-1 sm:mb-5">
               <button type="button" onClick={() => setMode("register")} className={`rounded-lg px-3 py-2.5 text-sm font-semibold transition ${isRegister ? "bg-violet-600 text-white shadow-lg shadow-violet-950/30" : "text-slate-400 hover:text-white"}`}>
                 Daftar
               </button>
@@ -134,7 +134,7 @@ export default function LoginPage() {
 
             <Link
               href="/auth/login"
-              className="group flex w-full items-center justify-center gap-3 rounded-xl bg-white px-4 py-3.5 font-semibold text-slate-900 shadow-lg shadow-black/10 transition hover:-translate-y-0.5 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-violet-400 focus:ring-offset-2 focus:ring-offset-[#100d1d]"
+              className="group flex w-full items-center justify-center gap-3 rounded-xl bg-white px-3 py-3 font-semibold text-sm text-slate-900 shadow-lg shadow-black/10 transition hover:-translate-y-0.5 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-violet-400 focus:ring-offset-2 focus:ring-offset-[#100d1d]"
             >
               <svg aria-hidden="true" viewBox="0 0 48 48" className="h-5 w-5">
                 <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5Z" transform="translate(0 5)" />
@@ -146,14 +146,14 @@ export default function LoginPage() {
               <span className="ml-auto text-slate-400 transition group-hover:translate-x-1">→</span>
             </Link>
 
-            <div className="my-4 flex items-center gap-3 text-[10px] uppercase tracking-[0.18em] text-slate-600 sm:my-6">
+            <div className="my-3 flex items-center gap-3 text-[10px] uppercase tracking-[0.18em] text-slate-600 sm:my-6">
               <span className="h-px flex-1 bg-white/10" />
               Login aman
               <span className="h-px flex-1 bg-white/10" />
             </div>
             <p className="text-center text-xs leading-5 text-slate-500">{isRegister ? "Akun baru akan dibuat otomatis jika email Google belum terdaftar." : "Gunakan akun Google yang sebelumnya dipakai mendaftar."} Kata sandi Google tidak disimpan oleh NOKOS WEB.</p>
           </div>
-          <p className="mt-3 pb-2 text-center text-xs text-slate-600 sm:mt-5 sm:pb-0">© 2026 NOKOS WEB · Virtual Number Platform</p>
+          <p className="mt-3 pb-2 text-center text-[11px] text-slate-600 sm:mt-5 sm:pb-0 sm:text-xs">© 2026 NOKOS WEB · Virtual Number Platform</p>
         </section>
       </div>
     </main>
