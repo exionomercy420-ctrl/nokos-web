@@ -1364,6 +1364,72 @@ export default function Home() {
   );
 }
 
+function ServiceBrandIcon({ service }: { service: Service }) {
+  const frame = "flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-white/10 shadow-lg";
+  switch (service.name) {
+    case "WhatsApp":
+      return (
+        <div className={`${frame} bg-[#25D366]/10 shadow-green-950/20`}>
+          <svg aria-label="WhatsApp" role="img" viewBox="0 0 48 48" className="h-9 w-9">
+            <path fill="#25D366" d="M24 4C13.1 4 4.2 12.7 4.2 23.5c0 3.5.9 6.8 2.6 9.7L4 44l11.1-2.9a20.2 20.2 0 0 0 8.9 2.1c10.9 0 19.8-8.8 19.8-19.6S34.9 4 24 4Z"/>
+            <path fill="#fff" d="M33.8 28.8c-.5-.3-3.1-1.5-3.6-1.7-.5-.2-.8-.3-1.1.3-.3.5-1.3 1.7-1.6 2-.3.3-.6.4-1.1.1-.5-.3-2.2-.8-4.2-2.6-1.5-1.3-2.5-2.9-2.8-3.4-.3-.5 0-.8.2-1 .2-.2.5-.6.8-.9.3-.3.3-.5.5-.8.2-.3.1-.6 0-.9-.1-.3-1.1-2.8-1.5-3.8-.4-1-.8-.9-1.1-.9h-.9c-.3 0-.8.1-1.3.6-.5.5-1.7 1.6-1.7 4s1.8 4.6 2.1 4.9c.3.3 3.5 5.3 8.5 7.4 1.2.5 2.1.8 2.8 1 1.2.4 2.3.3 3.1.2 1-.2 3.1-1.3 3.5-2.4.4-1.2.4-2.1.3-2.4-.2-.3-.5-.4-1-.7Z"/>
+          </svg>
+        </div>
+      );
+    case "Telegram":
+      return (
+        <div className={`${frame} bg-sky-400/10 shadow-sky-950/20`}>
+          <svg aria-label="Telegram" role="img" viewBox="0 0 48 48" className="h-9 w-9">
+            <circle cx="24" cy="24" r="20" fill="#229ED9"/>
+            <path fill="#fff" d="m11.3 23.1 23.1-8.9c1.1-.4 2.1.3 1.7 2l-3.9 18.3c-.3 1.3-1.1 1.6-2.2.9l-6.1-4.5-2.9 2.8c-.3.3-.6.6-1.2.6l.4-6.2 11.3-10.2c.5-.4-.1-.7-.7-.3L17 26l-5.9-1.8c-1.3-.4-1.3-1.3.2-1.9Z"/>
+          </svg>
+        </div>
+      );
+    case "Instagram":
+      return (
+        <div className={`${frame} bg-gradient-to-br from-fuchsia-500/20 via-pink-500/10 to-orange-400/20`}>
+          <svg aria-label="Instagram" role="img" viewBox="0 0 48 48" className="h-9 w-9">
+            <defs><linearGradient id="ig-gradient" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stopColor="#FFB800"/><stop offset=".48" stopColor="#F62976"/><stop offset="1" stopColor="#8B5CF6"/></linearGradient></defs>
+            <rect x="5" y="5" width="38" height="38" rx="11" fill="none" stroke="url(#ig-gradient)" strokeWidth="4"/>
+            <circle cx="24" cy="24" r="9" fill="none" stroke="url(#ig-gradient)" strokeWidth="4"/>
+            <circle cx="35" cy="13" r="2.6" fill="#F62976"/>
+          </svg>
+        </div>
+      );
+    case "Google":
+      return (
+        <div className={`${frame} bg-white shadow-black/20`}>
+          <svg aria-label="Google" role="img" viewBox="0 0 48 48" className="h-9 w-9">
+            <path fill="#4285F4" d="M43.6 24.5c0-1.4-.1-2.8-.4-4.1H24v7.8h11a9.4 9.4 0 0 1-4.1 6.2l6.6 5.1c3.9-3.6 6.1-8.9 6.1-15Z"/>
+            <path fill="#34A853" d="M24 44c5.5 0 10.1-1.8 13.5-4.9l-6.6-5.1c-1.8 1.2-4.1 2-6.9 2-5.3 0-9.8-3.6-11.4-8.4l-6.8 5.2A20.4 20.4 0 0 0 24 44Z"/>
+            <path fill="#FBBC05" d="M12.6 27.6a12.2 12.2 0 0 1 0-7.2l-6.8-5.2a20.1 20.1 0 0 0 0 17.6l6.8-5.2Z"/>
+            <path fill="#EA4335" d="M24 12.1c3 0 5.7 1 7.8 3.1l5.8-5.8C34.1 6.1 29.5 4 24 4A20.4 20.4 0 0 0 5.8 15.2l6.8 5.2c1.6-4.8 6.1-8.3 11.4-8.3Z"/>
+          </svg>
+        </div>
+      );
+    case "Facebook":
+      return (
+        <div className={`${frame} bg-[#1877F2]/10 shadow-blue-950/20`}>
+          <svg aria-label="Facebook" role="img" viewBox="0 0 48 48" className="h-9 w-9">
+            <path fill="#1877F2" d="M24 4a20 20 0 1 0 0 40 20 20 0 0 0 0-40Z"/>
+            <path fill="#fff" d="M27.2 40V26.3h4.6l.7-5.3h-5.3v-3.4c0-1.5.4-2.5 2.6-2.5h2.8v-4.7c-.5-.1-2.2-.2-4.2-.2-4.2 0-7 2.5-7 7.2V21h-4.7v5.3h4.7V40h5.8Z"/>
+          </svg>
+        </div>
+      );
+    case "TikTok":
+      return (
+        <div className={`${frame} bg-white/[0.06] shadow-black/20`}>
+          <svg aria-label="TikTok" role="img" viewBox="0 0 48 48" className="h-9 w-9">
+            <path fill="#25F4EE" d="M28 5h7c.3 4.1 2.5 7.1 7 8v7c-3.1-.1-6.1-1.1-8.7-2.8v12.2c0 7.2-5.8 12.1-12.8 12.1-6.1 0-10.5-4.4-10.5-10.1 0-7 6.4-12 14-10.8v7.2c-3.8-1.2-7.1.8-7.1 3.8 0 2.2 1.7 3.4 3.7 3.4 2.5 0 4.4-1.8 4.4-5.4V5Z"/>
+            <path fill="#FE2C55" d="M25 8h6.5c.3 4.1 2.5 7.1 7 8v6.2c-2.8-.5-5.2-1.5-7.2-2.9v11.3c0 7.2-5.8 12.1-12.8 12.1-2.5 0-4.7-.8-6.4-2.1 1.7 1.1 3.8 1.7 6 1.7 7 0 12.8-4.9 12.8-12.1V20c2.6 1.7 5.6 2.7 8.7 2.8v-6.2c-4.5-.9-6.7-3.9-7-8H25Z" opacity=".85"/>
+          </svg>
+        </div>
+      );
+    default:
+      return <div className={`${frame} ${service.color} text-2xl font-bold`}>{service.icon}</div>;
+  }
+}
+
 function ServiceCard({
   service,
   onChoose,
@@ -1374,11 +1440,7 @@ function ServiceCard({
   return (
     <div className="rounded-2xl border border-white/10 bg-[#151020] p-5 transition hover:-translate-y-0.5 hover:border-violet-400/30">
       <div className="flex items-start justify-between gap-3">
-        <div
-          className={`flex h-12 w-12 items-center justify-center rounded-xl text-2xl font-bold ${service.color}`}
-        >
-          {service.icon}
-        </div>
+        <ServiceBrandIcon service={service} />
 
         <span className="rounded-full border border-white/10 px-2.5 py-1 text-[10px] text-gray-400">
           {service.category}
