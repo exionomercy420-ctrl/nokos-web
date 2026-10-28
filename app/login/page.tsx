@@ -1,12 +1,18 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
 
 const highlights = [
   { icon: "✦", title: "Cepat & praktis", description: "Pilih layanan dan kelola pesanan dari satu dashboard." },
   { icon: "◈", title: "Saldo terpantau", description: "Lihat saldo serta riwayat transaksi dalam satu tempat." },
-  { icon: "⌁", title: "Banyak layanan", description: "WhatsApp, Telegram, Instagram, dan layanan lainnya." },
+  { icon: "⌁", title: "Banyak layanan", description: "WhatsApp, Telegram, Instagram, dan 20+ layanan lainnya." },
 ];
 
 export default function LoginPage() {
+  const [mode, setMode] = useState<"register" | "login">("register");
+  const isRegister = mode === "register";
+
   return (
     <main className="relative isolate min-h-screen overflow-hidden bg-[#070611] text-white">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
@@ -37,7 +43,7 @@ export default function LoginPage() {
             <span className="mt-2 block bg-gradient-to-r from-violet-300 via-fuchsia-300 to-blue-300 bg-clip-text text-transparent">Semua dalam satu tempat.</span>
           </h1>
           <p className="mt-6 max-w-lg text-base leading-7 text-slate-400 sm:text-lg">
-            Masuk ke akun NOKOS WEB untuk mengelola layanan nomor virtual, memantau pesanan, dan melihat saldo dengan praktis.
+            Buat akun atau masuk untuk mengelola layanan nomor virtual, memantau pesanan, dan melihat saldo dengan praktis.
           </p>
 
           <div className="mt-9 grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
@@ -49,16 +55,35 @@ export default function LoginPage() {
               </div>
             ))}
           </div>
-          <p className="mt-8 text-xs text-slate-600">Akses akun aman melalui autentikasi Google.</p>
+
+          <div className="mt-8 flex flex-wrap items-center gap-2 text-xs text-slate-500">
+            <span className="flex -space-x-2">
+              <span className="flex h-7 w-7 items-center justify-center rounded-full border-2 border-[#070611] bg-green-500 text-white">W</span>
+              <span className="flex h-7 w-7 items-center justify-center rounded-full border-2 border-[#070611] bg-sky-500 text-white">➤</span>
+              <span className="flex h-7 w-7 items-center justify-center rounded-full border-2 border-[#070611] bg-pink-500 text-white">◎</span>
+            </span>
+            <span>Beragam aplikasi dalam satu tempat</span>
+          </div>
         </section>
 
         <section className="mx-auto w-full max-w-md">
           <div className="rounded-[2rem] border border-white/[0.12] bg-[#100d1d]/90 p-6 shadow-2xl shadow-black/40 backdrop-blur-xl sm:p-9">
-            <div className="mb-7">
+            <div className="mb-6">
               <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-blue-600 text-2xl font-black shadow-lg shadow-violet-950/50">N</div>
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-violet-300">Selamat datang</p>
-              <h2 className="mt-2 text-2xl font-bold tracking-tight">Masuk ke akunmu</h2>
-              <p className="mt-2 text-sm leading-6 text-slate-400">Gunakan akun Google untuk melanjutkan ke dashboard NOKOS WEB.</p>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-violet-300">{isRegister ? "Mulai gratis" : "Selamat datang kembali"}</p>
+              <h2 className="mt-2 text-2xl font-bold tracking-tight">{isRegister ? "Buat akun NOKOS" : "Masuk ke akunmu"}</h2>
+              <p className="mt-2 text-sm leading-6 text-slate-400">
+                {isRegister ? "Belum punya akun? Daftar dengan Google dalam beberapa langkah." : "Sudah terdaftar? Masuk menggunakan akun Google yang sama."}
+              </p>
+            </div>
+
+            <div className="mb-5 grid grid-cols-2 rounded-xl border border-white/10 bg-black/20 p-1">
+              <button type="button" onClick={() => setMode("register")} className={`rounded-lg px-3 py-2.5 text-sm font-semibold transition ${isRegister ? "bg-violet-600 text-white shadow-lg shadow-violet-950/30" : "text-slate-400 hover:text-white"}`}>
+                Daftar
+              </button>
+              <button type="button" onClick={() => setMode("login")} className={`rounded-lg px-3 py-2.5 text-sm font-semibold transition ${!isRegister ? "bg-violet-600 text-white shadow-lg shadow-violet-950/30" : "text-slate-400 hover:text-white"}`}>
+                Login
+              </button>
             </div>
 
             <Link
@@ -71,16 +96,20 @@ export default function LoginPage() {
                 <path fill="#FBBC05" d="M10.53 28.59A14.4 14.4 0 0 1 9.75 24c0-1.59.27-3.13.76-4.59l-7.98-6.19A23.9 23.9 0 0 0 0 24c0 3.88.93 7.55 2.56 10.78l7.97-6.19Z" />
                 <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.9-5.86l-7.66-5.94c-2.13 1.43-4.85 2.28-8.24 2.28-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48Z" />
               </svg>
-              Lanjutkan dengan Google
+              {isRegister ? "Daftar dengan Google" : "Masuk dengan Google"}
               <span className="ml-auto text-slate-400 transition group-hover:translate-x-1">→</span>
             </Link>
 
+            <p className="mt-4 text-center text-xs leading-5 text-slate-500">
+              {isRegister ? "Akun baru akan dibuat otomatis jika email Google belum terdaftar." : "Gunakan akun Google yang sebelumnya dipakai mendaftar."}
+            </p>
+
             <div className="my-6 flex items-center gap-3 text-[10px] uppercase tracking-[0.18em] text-slate-600">
               <span className="h-px flex-1 bg-white/10" />
-              Login aman
+              Autentikasi aman
               <span className="h-px flex-1 bg-white/10" />
             </div>
-            <p className="text-center text-xs leading-5 text-slate-500">Kami menggunakan autentikasi Google. Kata sandi Google kamu tidak disimpan oleh NOKOS WEB.</p>
+            <p className="text-center text-xs leading-5 text-slate-500">Kata sandi Google kamu tidak disimpan oleh NOKOS WEB.</p>
           </div>
           <p className="mt-5 text-center text-xs text-slate-600">© 2026 NOKOS WEB · Virtual Number Platform</p>
         </section>
