@@ -1135,7 +1135,7 @@ export default function Home() {
     <main className="min-h-screen bg-[#0c0912] text-white">
       <div className="flex min-h-screen">
         <aside
-          className={`fixed inset-y-0 left-0 z-30 flex h-screen flex-col border-r border-white/[0.08] bg-[#100c18] shadow-2xl transition-[width] duration-300 ${
+          className={`fixed inset-y-0 left-0 z-30 hidden h-screen flex-col border-r md:flex border-white/[0.08] bg-[#100c18] shadow-2xl transition-[width] duration-300 ${
             sidebarCollapsed ? "w-16" : "w-64"
           }`}
         >
@@ -1249,10 +1249,10 @@ export default function Home() {
 
         <div
           className={`min-w-0 flex-1 transition-[margin] duration-300 ${
-            sidebarCollapsed ? "ml-16" : "ml-64"
+            sidebarCollapsed ? "md:ml-16" : "md:ml-64"
           }`}
         >
-          <header className="sticky top-0 z-20 flex min-h-20 items-center justify-between gap-4 border-b border-white/[0.08] bg-[#0c0912]/95 px-4 backdrop-blur-xl md:px-8">
+          <header className="sticky top-0 z-20 flex min-h-16 items-center justify-between gap-2 border-b border-white/[0.08] bg-[#0c0912]/95 px-3 backdrop-blur-xl sm:min-h-20 sm:gap-4 sm:px-4 md:px-8">
             <div className="flex min-w-0 items-center gap-3">
               <button
                 onClick={() =>
@@ -1274,7 +1274,7 @@ export default function Home() {
               </button>
 
               <div className="min-w-0">
-                <h2 className="truncate text-lg font-bold">{active}</h2>
+                <h2 className="truncate text-base font-bold sm:text-lg">{active}</h2>
                 <p className="hidden text-xs text-gray-500 sm:block">
                   Dashboard / {active}
                 </p>
@@ -1302,7 +1302,7 @@ export default function Home() {
               <form action="/auth/signout" method="post">
                 <button
                   type="submit"
-                  className="rounded-xl border border-red-400/20 bg-red-500/10 px-3 py-2 text-xs font-semibold text-red-200 transition hover:bg-red-500/20 sm:px-4 sm:text-sm"
+                  className="rounded-lg border border-red-400/20 bg-red-500/10 px-2 py-2 text-[11px] font-semibold text-red-200 transition hover:bg-red-500/20 sm:rounded-xl sm:px-4 sm:text-sm"
                 >
                   Logout
                 </button>
@@ -1310,7 +1310,7 @@ export default function Home() {
             </div>
           </header>
 
-          <div className="mx-auto max-w-7xl space-y-6 p-4 md:space-y-7 md:p-8">
+          <div className="mx-auto max-w-7xl space-y-4 px-3 pb-24 pt-4 sm:space-y-6 sm:p-4 sm:pb-24 md:space-y-7 md:p-8">
             {notice &&
               active !== "Top Up Saldo" &&
               active !== "Profil" &&
@@ -1336,6 +1336,22 @@ export default function Home() {
           </div>
         </div>
       </div>
+        <nav aria-label="Navigasi utama mobile" className="fixed inset-x-0 bottom-0 z-40 border-t border-white/10 bg-[#100c18]/95 px-1 pb-[max(env(safe-area-inset-bottom),8px)] pt-2 backdrop-blur-xl md:hidden">
+          <div className="mx-auto grid max-w-lg grid-cols-5 gap-1">
+            {[
+              { name: "Dashboard" as Menu, icon: "⌂", label: "Home" },
+              { name: "Beli Nokos" as Menu, icon: "▣", label: "Beli" },
+              { name: "Order Aktif" as Menu, icon: "◷", label: "Order" },
+              { name: "Top Up Saldo" as Menu, icon: "＋", label: "Top Up" },
+              { name: "Profil" as Menu, icon: "◎", label: "Profil" },
+            ].map((item) => (
+              <button key={item.name} onClick={() => navigate(item.name)} aria-current={active === item.name ? "page" : undefined} className={"flex min-w-0 flex-col items-center justify-center gap-1 rounded-xl px-1 py-2 text-[10px] font-medium transition " + (active === item.name ? "bg-violet-500/15 text-violet-300" : "text-slate-500 hover:text-white")}>
+                <span className="text-xl leading-5">{item.icon}</span>
+                <span className="max-w-full truncate">{item.label}</span>
+              </button>
+            ))}
+          </div>
+        </nav>
     </main>
   );
 }
