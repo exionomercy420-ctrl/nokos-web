@@ -60,57 +60,33 @@ const menus: { name: Menu; icon: string }[] = [
 ];
 
 const services: Service[] = [
-  {
-    name: "WhatsApp",
-    icon: "✆",
-    category: "Komunikasi",
-    price: 8000,
-    description: "Nomor virtual untuk verifikasi WhatsApp",
-    color: "bg-green-500/15 text-green-400",
-  },
-  {
-    name: "Telegram",
-    icon: "➤",
-    category: "Komunikasi",
-    price: 7000,
-    description: "Nomor virtual untuk verifikasi Telegram",
-    color: "bg-sky-500/15 text-sky-400",
-  },
-  {
-    name: "Instagram",
-    icon: "◎",
-    category: "Sosial Media",
-    price: 9000,
-    description: "Nomor virtual untuk verifikasi Instagram",
-    color: "bg-pink-500/15 text-pink-400",
-  },
-  {
-    name: "Google",
-    icon: "G",
-    category: "Email",
-    price: 12000,
-    description: "Nomor virtual untuk verifikasi Google",
-    color: "bg-yellow-500/15 text-yellow-400",
-  },
-  {
-    name: "Facebook",
-    icon: "f",
-    category: "Sosial Media",
-    price: 8000,
-    description: "Nomor virtual untuk verifikasi Facebook",
-    color: "bg-blue-500/15 text-blue-400",
-  },
-  {
-    name: "TikTok",
-    icon: "♪",
-    category: "Sosial Media",
-    price: 10000,
-    description: "Nomor virtual untuk verifikasi TikTok",
-    color: "bg-white/10 text-white",
-  },
+  { name: "WhatsApp", icon: "WA", category: "Komunikasi", price: 8000, description: "Nomor virtual untuk verifikasi WhatsApp", color: "bg-green-500/15 text-green-400" },
+  { name: "Telegram", icon: "➤", category: "Komunikasi", price: 7000, description: "Nomor virtual untuk verifikasi Telegram", color: "bg-sky-500/15 text-sky-400" },
+  { name: "Facebook", icon: "f", category: "Sosial Media", price: 8000, description: "Nomor virtual untuk verifikasi Facebook", color: "bg-blue-500/15 text-blue-400" },
+  { name: "TikTok", icon: "♪", category: "Sosial Media", price: 10000, description: "Nomor virtual untuk verifikasi TikTok", color: "bg-white/10 text-white" },
+  { name: "DANA", icon: "D", category: "Keuangan", price: 10000, description: "Nomor virtual untuk verifikasi DANA", color: "bg-sky-500/15 text-sky-400" },
+  { name: "Instagram", icon: "◎", category: "Sosial Media", price: 9000, description: "Nomor virtual untuk verifikasi Instagram", color: "bg-pink-500/15 text-pink-400" },
+  { name: "Grab", icon: "G", category: "Transportasi", price: 9000, description: "Nomor virtual untuk verifikasi Grab", color: "bg-green-500/15 text-green-400" },
+  { name: "GoPay", icon: "G", category: "Keuangan", price: 10000, description: "Nomor virtual untuk verifikasi GoPay", color: "bg-cyan-500/15 text-cyan-400" },
+  { name: "Twitter/X", icon: "𝕏", category: "Sosial Media", price: 9000, description: "Nomor virtual untuk verifikasi Twitter/X", color: "bg-white/10 text-white" },
+  { name: "Google", icon: "G", category: "Email", price: 12000, description: "Nomor virtual untuk verifikasi Google", color: "bg-yellow-500/15 text-yellow-400" },
+  { name: "Binance", icon: "◆", category: "Keuangan", price: 15000, description: "Nomor virtual untuk verifikasi Binance", color: "bg-yellow-500/15 text-yellow-400" },
+  { name: "MiChat", icon: "M", category: "Komunikasi", price: 8000, description: "Nomor virtual untuk verifikasi MiChat", color: "bg-green-500/15 text-green-400" },
+  { name: "myXL", icon: "X", category: "Telekomunikasi", price: 8000, description: "Nomor virtual untuk verifikasi myXL", color: "bg-violet-500/15 text-violet-400" },
+  { name: "myIM3", icon: "3", category: "Telekomunikasi", price: 8000, description: "Nomor virtual untuk verifikasi myIM3", color: "bg-yellow-500/15 text-yellow-400" },
+  { name: "Tokopedia", icon: "T", category: "Belanja", price: 9000, description: "Nomor virtual untuk verifikasi Tokopedia", color: "bg-green-500/15 text-green-400" },
+  { name: "Shopee", icon: "S", category: "Belanja", price: 9000, description: "Nomor virtual untuk verifikasi Shopee", color: "bg-orange-500/15 text-orange-400" },
+  { name: "Indomaret", icon: "I", category: "Belanja", price: 8000, description: "Nomor virtual untuk verifikasi Indomaret", color: "bg-red-500/15 text-red-400" },
+  { name: "Alfamidi", icon: "A", category: "Belanja", price: 8000, description: "Nomor virtual untuk verifikasi Alfamidi", color: "bg-red-500/15 text-red-400" },
+  { name: "Alfagift", icon: "A", category: "Belanja", price: 8000, description: "Nomor virtual untuk verifikasi Alfagift", color: "bg-red-500/15 text-red-400" },
+  { name: "Discord", icon: "D", category: "Komunikasi", price: 9000, description: "Nomor virtual untuk verifikasi Discord", color: "bg-indigo-500/15 text-indigo-400" },
+  { name: "LINE", icon: "L", category: "Komunikasi", price: 9000, description: "Nomor virtual untuk verifikasi LINE", color: "bg-green-500/15 text-green-400" },
+  { name: "Microsoft", icon: "M", category: "Email", price: 12000, description: "Nomor virtual untuk verifikasi Microsoft", color: "bg-sky-500/15 text-sky-400" },
+  { name: "Lazada", icon: "L", category: "Belanja", price: 9000, description: "Nomor virtual untuk verifikasi Lazada", color: "bg-violet-500/15 text-violet-400" },
+  { name: "PayPal", icon: "P", category: "Keuangan", price: 15000, description: "Nomor virtual untuk verifikasi PayPal", color: "bg-blue-500/15 text-blue-400" },
 ];
 
-const categories = ["Semua", "Komunikasi", "Sosial Media", "Email"];
+const categories = ["Semua", "Komunikasi", "Sosial Media", "Email", "Keuangan", "Transportasi", "Telekomunikasi", "Belanja"];
 
 const paymentMethods = ["QRIS", "DANA", "GoPay", "Transfer Bank"];
 
@@ -1425,6 +1401,42 @@ function ServiceBrandIcon({ service }: { service: Service }) {
           </svg>
         </div>
       );
+    case "DANA":
+      return <div className={`${frame} bg-[#168BFF] text-white shadow-blue-950/20`}><span className="rounded-full bg-white px-2 py-1 text-lg font-black italic text-[#168BFF]">D</span></div>;
+    case "Grab":
+      return <div className={`${frame} bg-[#00B14F] text-white shadow-green-950/20`}><span className="text-xl font-black tracking-tight">Grab</span></div>;
+    case "GoPay":
+      return <div className={`${frame} bg-[#00AED6] text-white shadow-cyan-950/20`}><span className="text-sm font-black">gopay</span></div>;
+    case "Twitter/X":
+      return <div className={`${frame} bg-black text-white shadow-black/20`}><span className="text-3xl font-medium">𝕏</span></div>;
+    case "Binance":
+      return <div className={`${frame} bg-[#F3BA2F] text-[#3B2A00] shadow-yellow-950/20`}><span className="text-3xl font-black">◆</span></div>;
+    case "MiChat":
+      return <div className={`${frame} bg-[#24C94B] text-white shadow-green-950/20`}><span className="text-2xl font-black">M</span></div>;
+    case "myXL":
+      return <div className={`${frame} bg-[#7B16F5] text-white shadow-violet-950/20`}><span className="text-2xl font-black">XL</span></div>;
+    case "myIM3":
+      return <div className={`${frame} bg-[#F9D423] text-[#171717] shadow-yellow-950/20`}><span className="text-xl font-black">IM3</span></div>;
+    case "Tokopedia":
+      return <div className={`${frame} bg-[#03AC0E] text-white shadow-green-950/20`}><span className="text-2xl font-black">T</span></div>;
+    case "Shopee":
+      return <div className={`${frame} bg-[#EE4D2D] text-white shadow-orange-950/20`}><span className="text-2xl font-black">S</span></div>;
+    case "Indomaret":
+      return <div className={`${frame} bg-white text-[#0054A6] shadow-black/20`}><span className="text-xs font-black">Indomaret</span></div>;
+    case "Alfamidi":
+      return <div className={`${frame} bg-[#E60023] text-white shadow-red-950/20`}><span className="text-xl font-black">A</span></div>;
+    case "Alfagift":
+      return <div className={`${frame} bg-[#E60023] text-white shadow-red-950/20`}><span className="text-xl font-black">A+</span></div>;
+    case "Discord":
+      return <div className={`${frame} bg-[#5865F2] text-white shadow-indigo-950/20`}><span className="text-2xl font-black">◕</span></div>;
+    case "LINE":
+      return <div className={`${frame} bg-[#06C755] text-white shadow-green-950/20`}><span className="text-xl font-black">LINE</span></div>;
+    case "Microsoft":
+      return <div className={`${frame} bg-white text-slate-800 shadow-black/20`}><span className="grid grid-cols-2 gap-0.5"><i className="h-3 w-3 bg-[#F25022]"/><i className="h-3 w-3 bg-[#7FBA00]"/><i className="h-3 w-3 bg-[#00A4EF]"/><i className="h-3 w-3 bg-[#FFB900]"/></span></div>;
+    case "Lazada":
+      return <div className={`${frame} bg-[#7E2BCE] text-white shadow-violet-950/20`}><span className="text-2xl font-black">L</span></div>;
+    case "PayPal":
+      return <div className={`${frame} bg-white text-[#003087] shadow-black/20`}><span className="text-2xl font-black italic">P</span></div>;
     default:
       return <div className={`${frame} ${service.color} text-2xl font-bold`}>{service.icon}</div>;
   }
