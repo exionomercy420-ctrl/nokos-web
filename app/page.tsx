@@ -202,7 +202,7 @@ export default function Home() {
         const metadataName = metadata.full_name ?? metadata.name ?? metadata.display_name;
         const name = typeof metadataName === "string" && metadataName.trim()
           ? metadataName.trim()
-          : email.split("@")[0] || "Pengguna";
+          : email || "Pengguna";
 
         setProfileEmail(email);
         setProfileName(name);
