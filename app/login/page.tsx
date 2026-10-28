@@ -14,10 +14,10 @@ export default function LoginPage() {
   const isRegister = mode === "register";
 
   return (
-    <main className="relative isolate min-h-screen overflow-x-hidden bg-[#070611] text-white">
+    <main className="relative isolate min-h-screen overflow-x-hidden bg-[#070611] text-white selection:bg-violet-500/40">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute -left-32 top-[-8rem] h-[28rem] w-[28rem] rounded-full bg-violet-600/20 blur-[120px]" />
-        <div className="absolute -right-20 bottom-[-10rem] h-[32rem] w-[32rem] rounded-full bg-blue-500/20 blur-[130px]" />
+        <div className="absolute -left-32 top-[-8rem] h-[28rem] w-[28rem] animate-nokos-glow rounded-full bg-violet-600/25 blur-[120px]" />
+        <div className="absolute -right-20 bottom-[-10rem] h-[32rem] w-[32rem] animate-nokos-glow rounded-full bg-blue-500/25 blur-[130px]" />
         <div className="absolute inset-0 opacity-[0.13] [background-image:linear-gradient(rgba(255,255,255,.12)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.12)_1px,transparent_1px)] [background-size:44px_44px] [mask-image:linear-gradient(to_bottom,black,transparent_85%)]" />
       </div>
 
@@ -33,8 +33,8 @@ export default function LoginPage() {
       </header>
 
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-5 px-4 pb-8 pt-1 sm:gap-12 sm:px-8 sm:pt-6 lg:grid lg:min-h-[calc(100vh-100px)] lg:grid-cols-[1.1fr_.9fr] lg:items-center lg:gap-20 lg:pb-20">
-        <section className="order-2 mx-auto hidden w-full max-w-2xl lg:order-1 lg:block lg:mx-0">
-          <div className="inline-flex items-center gap-2 rounded-full border border-violet-300/20 bg-violet-400/[0.08] px-3 py-1.5 text-xs font-medium text-violet-200">
+        <section className="order-2 mx-auto block w-full max-w-2xl lg:order-1 lg:mx-0">
+          <div className="inline-flex items-center gap-2 rounded-full border border-violet-300/20 bg-violet-400/[0.08] px-3 py-1.5 text-[10px] font-medium text-violet-200 sm:text-xs">
             <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,.8)]" />
             Satu dashboard untuk kebutuhan nokos
           </div>
@@ -47,7 +47,7 @@ export default function LoginPage() {
           </p>
 
 
-          <div className="mt-6 overflow-hidden rounded-2xl border border-white/[0.09] bg-[#0d0a19]/80 py-3 sm:mt-8 sm:py-4">
+          <div className="mt-5 overflow-hidden rounded-2xl border border-violet-300/15 bg-gradient-to-br from-[#120e20]/95 to-[#090b17]/95 py-3 shadow-[0_12px_45px_rgba(76,29,149,0.12)] sm:mt-8 sm:py-4">
             <div className="mb-3 flex items-center justify-between px-4">
               <p className="text-xs font-semibold text-slate-300">Jelajahi layanan populer</p>
               <span className="text-[10px] uppercase tracking-[0.15em] text-violet-300">24+ aplikasi</span>
@@ -87,7 +87,7 @@ export default function LoginPage() {
           </div>
 
           <style jsx global>{`
-            @keyframes nokos-marquee-left {
+            @keyframes nokos-glow { 0%, 100% { opacity: .65; transform: scale(1); } 50% { opacity: 1; transform: scale(1.08); } }\n            @keyframes nokos-marquee-left {
               from { transform: translateX(0); }
               to { transform: translateX(-50%); }
             }
@@ -95,10 +95,10 @@ export default function LoginPage() {
               from { transform: translateX(-50%); }
               to { transform: translateX(0); }
             }
-            .animate-nokos-left { animation: nokos-marquee-left 32s linear infinite; }
+            .animate-nokos-glow { animation: nokos-glow 9s ease-in-out infinite; }\n            .animate-nokos-left { animation: nokos-marquee-left 32s linear infinite; }
             .animate-nokos-right { animation: nokos-marquee-right 36s linear infinite; }
             @media (prefers-reduced-motion: reduce) {
-              .animate-nokos-left, .animate-nokos-right { animation: none; }
+              .animate-nokos-left, .animate-nokos-right, .animate-nokos-glow { animation: none; }
             }
           `}</style>
 
@@ -115,9 +115,9 @@ export default function LoginPage() {
         </section>
 
         <section className="order-1 mx-auto w-full max-w-md lg:order-2">
-          <div className="rounded-2xl border border-white/[0.12] bg-[#100d1d]/90 p-4 shadow-2xl shadow-black/40 backdrop-blur-xl sm:rounded-[2rem] sm:p-9">
-            <div className="mb-4 sm:mb-7">
-              <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-blue-600 text-lg font-black shadow-lg shadow-violet-950/50 sm:mb-5 sm:h-14 sm:w-14 sm:rounded-2xl sm:text-2xl">N</div>
+          <div className="relative overflow-hidden rounded-2xl border border-violet-300/20 bg-gradient-to-b from-[#171127]/95 via-[#100d1d]/95 to-[#0c0b18]/95 p-4 shadow-[0_24px_90px_rgba(76,29,149,0.18)] backdrop-blur-xl before:pointer-events-none before:absolute before:inset-x-8 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-violet-300/70 before:to-transparent sm:rounded-[2rem] sm:p-9">
+            <div className="relative mb-4 sm:mb-7">
+              <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-xl border border-white/20 bg-gradient-to-br from-violet-400 via-violet-600 to-blue-600 text-lg font-black shadow-lg shadow-violet-950/60 ring-4 ring-violet-400/[0.08] sm:mb-5 sm:h-14 sm:w-14 sm:rounded-2xl sm:text-2xl">N</div>
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-violet-300">{isRegister ? "Mulai sekarang" : "Selamat datang kembali"}</p>
               <h2 className="mt-2 text-xl font-bold tracking-tight sm:text-2xl">{isRegister ? "Buat akun NOKOS" : "Masuk ke akunmu"}</h2>
               <p className="mt-2 text-sm leading-6 text-slate-400">{isRegister ? "Daftar untuk mulai mengelola layanan nomor virtual." : "Gunakan akun Google yang sama dengan saat mendaftar."}</p>
