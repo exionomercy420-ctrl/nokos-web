@@ -1,6 +1,8 @@
 
 "use client";
 
+import { createClient } from "@/lib/supabase/client";
+
 import {
   type FormEvent,
   useEffect,
@@ -181,8 +183,39 @@ export default function Home() {
   const [paymentMethod, setPaymentMethod] = useState("QRIS");
 
   const [notice, setNotice] = useState("");
-  const [profileName, setProfileName] = useState("Pengguna PB");
-  const [profileEmail, setProfileEmail] = useState("pengguna@email.com");
+  const [profileName, setProfileName] = useState("Memuat profil...");
+  const [profileEmail, setProfileEmail] = useState("");
+
+  // Ambil identitas dari sesi Supabase, bukan placeholder frontend.
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadProfile() {
+      try {
+        const supabase = createClient();
+        const { data, error } = await supabase.auth.getUser();
+        if (cancelled || error || !data.user) return;
+
+        const user = data.user;
+        const email = user.email ?? "";
+        const metadata = user.user_metadata ?? {};
+        const metadataName = metadata.full_name ?? metadata.name ?? metadata.display_name;
+        const name = typeof metadataName === "string" && metadataName.trim()
+          ? metadataName.trim()
+          : email.split("@")[0] || "Pengguna";
+
+        setProfileEmail(email);
+        setProfileName(name);
+      } catch (error) {
+        console.error("Gagal memuat profil pengguna:", error);
+      }
+    }
+
+    void loadProfile();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const [walletTransactions, setWalletTransactions] = useState<
     WalletTransaction[]
@@ -1285,9 +1318,17 @@ export default function Home() {
                 onClick={() => navigate("Profil")}
                 className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-violet-500/15 font-bold text-violet-200 hover:bg-violet-500/25"
                 aria-label="Buka profil"
+                title="Buka profil"
               >
                 {profileName.charAt(0).toUpperCase() || "P"}
               </button>
+
+              <a
+                href="/auth/signout"
+                className="rounded-xl border border-red-400/20 bg-red-500/10 px-3 py-2 text-xs font-semibold text-red-200 transition hover:bg-red-500/20 sm:px-4 sm:text-sm"
+              >
+                Logout
+              </a>
             </div>
           </header>
 
