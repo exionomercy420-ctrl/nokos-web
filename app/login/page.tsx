@@ -46,6 +46,62 @@ export default function LoginPage() {
             Masuk ke akun NOKOS WEB untuk mengelola layanan nomor virtual, memantau pesanan, dan melihat saldo dengan praktis.
           </p>
 
+
+          <div className="mt-8 overflow-hidden rounded-2xl border border-white/[0.09] bg-[#0d0a19]/80 py-4">
+            <div className="mb-3 flex items-center justify-between px-4">
+              <p className="text-xs font-semibold text-slate-300">Jelajahi layanan populer</p>
+              <span className="text-[10px] uppercase tracking-[0.15em] text-violet-300">24+ aplikasi</span>
+            </div>
+            <div className="relative flex flex-col gap-2 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_7%,black_93%,transparent)]">
+              <div className="flex w-max animate-nokos-left gap-2">
+                {[...Array(2)].flatMap((_, repeat) => [
+                  {name:"WhatsApp",mark:"◉",tone:"bg-emerald-500/15 text-emerald-300"},
+                  {name:"Telegram",mark:"➤",tone:"bg-sky-500/15 text-sky-300"},
+                  {name:"Instagram",mark:"◎",tone:"bg-pink-500/15 text-pink-300"},
+                  {name:"TikTok",mark:"♪",tone:"bg-white/10 text-white"},
+                  {name:"Facebook",mark:"f",tone:"bg-blue-500/15 text-blue-300"},
+                  {name:"Google",mark:"G",tone:"bg-amber-500/15 text-amber-300"},
+                ].map((item) => ({...item, key: repeat + "-" + item.name}))).map((item) => (
+                  <div key={item.key} className="flex shrink-0 items-center gap-2 rounded-xl border border-white/[0.07] bg-white/[0.025] px-3 py-2">
+                    <span className={"flex h-8 w-8 items-center justify-center rounded-lg text-lg font-bold " + item.tone}>{item.mark}</span>
+                    <span className="text-xs font-medium text-slate-300">{item.name}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="flex w-max animate-nokos-right gap-2">
+                {[...Array(2)].flatMap((_, repeat) => [
+                  {name:"DANA",mark:"D",tone:"bg-sky-500/15 text-sky-300"},
+                  {name:"GoPay",mark:"G",tone:"bg-cyan-500/15 text-cyan-300"},
+                  {name:"Grab",mark:"G",tone:"bg-green-500/15 text-green-300"},
+                  {name:"Tokopedia",mark:"T",tone:"bg-emerald-500/15 text-emerald-300"},
+                  {name:"Shopee",mark:"S",tone:"bg-orange-500/15 text-orange-300"},
+                  {name:"Discord",mark:"◕",tone:"bg-indigo-500/15 text-indigo-300"},
+                ].map((item) => ({...item, key: repeat + "-" + item.name}))).map((item) => (
+                  <div key={item.key} className="flex shrink-0 items-center gap-2 rounded-xl border border-white/[0.07] bg-white/[0.025] px-3 py-2">
+                    <span className={"flex h-8 w-8 items-center justify-center rounded-lg text-lg font-bold " + item.tone}>{item.mark}</span>
+                    <span className="text-xs font-medium text-slate-300">{item.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <style jsx global>{`
+            @keyframes nokos-marquee-left {
+              from { transform: translateX(0); }
+              to { transform: translateX(-50%); }
+            }
+            @keyframes nokos-marquee-right {
+              from { transform: translateX(-50%); }
+              to { transform: translateX(0); }
+            }
+            .animate-nokos-left { animation: nokos-marquee-left 32s linear infinite; }
+            .animate-nokos-right { animation: nokos-marquee-right 36s linear infinite; }
+            @media (prefers-reduced-motion: reduce) {
+              .animate-nokos-left, .animate-nokos-right { animation: none; }
+            }
+          `}</style>
+
           <div className="mt-9 grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
             {highlights.map((item) => (
               <div key={item.title} className="rounded-2xl border border-white/[0.09] bg-white/[0.035] p-4 backdrop-blur-sm">
